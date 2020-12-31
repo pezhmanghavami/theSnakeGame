@@ -25,9 +25,18 @@
             grid-template-columns: repeat(50, 1fr);
         }
 
+        #game-info {
+            position: absolute;
+            top: 25px;
+        }
+
         .snake {
             background-color: hsl(200, 100%, 50%);
             border: .25vmin solid black;
+        }
+
+        #snake-head {
+            background-color: hsl(147, 76%, 37%);
         }
 
         .food {
@@ -40,6 +49,10 @@
 </head>
 
 <body>
+    <div id="game-info">
+        <p>TIME LEFT : <span id="remaining-time">30</span> Seconds</p>
+        <p>SCORE : <span id="score">0</span></p>
+    </div>
     <div id="game-board"></div>
 </body>
 

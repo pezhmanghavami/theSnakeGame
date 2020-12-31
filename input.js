@@ -5,6 +5,9 @@ let lastInputDirection = { x: 0, y: 0 };
 //The way that arrow up and down are is because how grid works
 window.addEventListener("keydown", e => {
     switch (e.key) {
+        case " ":
+            inputDirection = { x: 0, y: 0 }
+            break;
         case "ArrowUp":
             if (lastInputDirection.y !== 0) break;
             inputDirection = { x: 0, y: -1 }

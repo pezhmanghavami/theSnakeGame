@@ -7,7 +7,8 @@ const EXPANSION_RATE = 1;
 
 export function update() {
     if (onSnake(food)) {
-        expandSnake(EXPANSION_RATE);
+        // expandSnake(EXPANSION_RATE);
+        expandSnake(getRandomExpansionRate(10));
         food = getRandomFoodPosition();
     }
 }
@@ -18,6 +19,10 @@ export function draw(gameBoard) {
     foodElement.style.gridColumnStart = food.x;
     foodElement.classList.add('food');
     gameBoard.appendChild(foodElement);
+}
+
+function getRandomExpansionRate(max) {
+    return Math.floor(Math.random() * max) + 1;
 }
 
 function getRandomFoodPosition() {

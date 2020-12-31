@@ -1,3 +1,4 @@
+import { showScore } from "./game.js";
 import { getInputDirection } from "./input.js";
 
 export const SNAKE_SPEED = 11;//This will be how many times the snake moves per second
@@ -8,6 +9,7 @@ let newSegments = 0;
 export function update() {
     addSegments();
     const inputDiretion = getInputDirection();
+    if (inputDiretion.x === 0 && inputDiretion.y === 0) return
     for (let i = snakeBody.length - 2; i >= 0; i--) {
         snakeBody[i + 1] = { ...snakeBody[i] };
     }
@@ -18,10 +20,11 @@ export function update() {
 }
 
 export function draw(gameBoard) {
-    snakeBody.forEach(segment => {
+    snakeBody.forEach((segment, index) => {
         const snakeElement = document.createElement('div');
         snakeElement.style.gridRowStart = segment.y;
         snakeElement.style.gridColumnStart = segment.x;
+        if (index === 0) snakeElement.id = 'snake-head';
         snakeElement.classList.add('snake');
         gameBoard.appendChild(snakeElement);
     });
@@ -29,6 +32,7 @@ export function draw(gameBoard) {
 
 export function expandSnake(amount) {
     newSegments = amount;
+    showScore(newSegments);
 }
 
 export function onSnake(position, { ignoreHead = false } = {}) {
@@ -40,6 +44,10 @@ export function onSnake(position, { ignoreHead = false } = {}) {
 
 export function getSnakeHead() {
     return snakeBody[0];
+}
+
+export function setSnakeHead(newHeadPos) {
+    snakeBody[0] = { ...newHeadPos };
 }
 
 export function snakeIntersection() {
