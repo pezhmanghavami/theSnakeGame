@@ -19,8 +19,11 @@ function main(currentTime) {//currentTime msec
         }
         return
     }
-    window.requestAnimationFrame(main);//I don't understand how the below code
-    //%^$&#^@%*&!@^#$*(@^#$ Is being ran gotta look up how this works*****************************
+    window.requestAnimationFrame(main);//Everytime that the browser is ready to paint , main is 
+    //the function that we want to be ran. Calling window.requestAmimationFrame isn't like a 
+    //function but rather a reserve for a promise of running a function --- MY UNDRESTANDING
+    //A note: since this belongs to the window object we can optionally not write window. ... .
+    
 
     const secondsSinceLastRedner = (currentTime - lastRenderTime) / 1000;
     if (secondsSinceLastRedner < 1 / SNAKE_SPEED) return
