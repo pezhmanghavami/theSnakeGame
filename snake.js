@@ -8,14 +8,14 @@ let newSegments = 0;
 
 export function update() {
     addSegments();
-    const inputDiretion = getInputDirection();
-    if (inputDiretion.x === 0 && inputDiretion.y === 0) return
+    const inputDirection = getInputDirection();
+    if (inputDirection.x === 0 && inputDirection.y === 0) return
     for (let i = snakeBody.length - 2; i >= 0; i--) {
         snakeBody[i + 1] = { ...snakeBody[i] };
     }
 
-    snakeBody[0].x += inputDiretion.x;
-    snakeBody[0].y += inputDiretion.y;
+    snakeBody[0].x += inputDirection.x;
+    snakeBody[0].y += inputDirection.y;
     console.log(snakeBody[0]);
 }
 

@@ -1,3 +1,5 @@
+import { pauseGame } from "./game.js";
+
 let inputDirection = { x: 0, y: 0 };
 let lastInputDirection = { x: 0, y: 0 };
 
@@ -6,6 +8,8 @@ let lastInputDirection = { x: 0, y: 0 };
 window.addEventListener("keydown", e => {
     switch (e.key) {
         case " ":
+            if (inputDirection.x === 0 && inputDirection.y === 0) break;
+            pauseGame();
             inputDirection = { x: 0, y: 0 }
             break;
         case "ArrowUp":
